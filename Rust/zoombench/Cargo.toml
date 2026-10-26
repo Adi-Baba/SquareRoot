@@ -1,0 +1,24 @@
+[package]
+name = "zoombench"
+version = "0.1.0"
+edition = "2021"
+description = "Certified cubic bracket-zoom square roots in Rust: division cost, and Halley / n-th-root variants"
+license = "MIT"
+
+[dependencies]
+num-bigint = "0.5.1"
+num-integer = "0.1.47"
+num-traits = "0.2.19"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[lib]
+name = "zoombench"
+path = "src/lib.rs"
+
+[[bin]]
+name = "zoombench"
+path = "src/main.rs"

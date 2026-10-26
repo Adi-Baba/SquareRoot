@@ -1,0 +1,21 @@
+[package]
+name = "srs"
+version = "0.1.0"
+edition = "2021"
+description = "Certified square-root sums in Rust: exact integer arithmetic, Pell constructions, and F1 separation law at 10M+ bits"
+
+[dependencies]
+num-bigint = "0.4"
+num-traits = "0.2"
+num-integer = "0.1"
+thiserror = "1.0"
+clap = { version = "4", features = ["derive"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[[bin]]
+name = "probe"
+path = "src/bin/probe.rs"

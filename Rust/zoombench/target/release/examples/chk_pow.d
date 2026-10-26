@@ -1,0 +1,1 @@
+/home/aditya/Documents/Irrational/Rust/zoombench/target/release/examples/chk_pow: /home/aditya/Documents/Irrational/Rust/zoombench/examples/chk_pow.rs /home/aditya/Documents/Irrational/Rust/zoombench/src/lib.rs

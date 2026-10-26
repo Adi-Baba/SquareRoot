@@ -1,0 +1,30 @@
+{
+  "//": [
+    "SRS/ and Src/ are flat directories of sibling modules, not installed",
+    "packages. Modules reach each other by bare name, and SRS modules reach",
+    "into ../Src. The cross-tree import used to be arranged with",
+    "sys.path.insert at import time in certsingle.py and _deps.py, which a",
+    "static analyzer cannot follow; it reported",
+    "  Import \"exp_certified\" could not be resolved",
+    "on a line that worked at run time. Both files now load by explicit file",
+    "path through _srclib.load_src_module instead, so the runtime problem is",
+    "gone -- but a bare-name import of a sibling is still not resolvable",
+    "statically, and tests/conftest.py still inserts paths for pytest.",
+    "Declaring the two roots here is the supported way to tell the analyzer",
+    "the truth, so the config stays.",
+    "reportMissingImports is 'warning' rather than 'error' on purpose: an",
+    "unresolved import should be visible without failing a check, since the",
+    "whole point of this tree is that a missing import is a defect worth",
+    "surfacing rather than one worth hiding behind a green build."
+  ],
+  "include": ["."],
+  "extraPaths": [".", "../Src"],
+  "reportMissingImports": "warning",
+  "reportMissingModuleSource": "none",
+  "executionEnvironments": [
+    {
+      "root": ".",
+      "extraPaths": [".", "../Src"]
+    }
+  ]
+}
